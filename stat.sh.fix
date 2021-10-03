@@ -1,0 +1,3 @@
+#!/bin/sh
+vol=$(`grep SMASTER .rm | sed "s/^......../amixer get /"` | grep % | awk -v RS=[ -v FS=] 'NR>1{print $1" " }' | grep %| tr -d '\n')
+echo $vol
