@@ -1,4 +1,4 @@
 #!/bin/sh
 #test `grep stat.sh /etc/crontab | wc -l` -gt 0  || sudo sed -i "$ a @reboot         uid0002 sleep 45 ; /home/uid0001/scripts/stat.sh" /etc/crontab
-vol=$(`grep SMASTER .rm | sed "s/^......../amixer get /"` | grep % | awk -v RS=[ -v FS=] 'NR>1{print $1" " }' | grep %| tr -d '\n')
+vol=$(echo `grep SMASTER .rm | sed "s/^........//" | xargs -n 2 amixer get ` | grep % | awk -v RS=[ -v FS=] 'NR>1{print $1" " }' | grep %| tr -d '\n')
 echo $vol
