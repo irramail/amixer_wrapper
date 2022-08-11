@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pulseaudio --start
+xset -dpms
+#sleep 15
+#while true; do DISPLAY=:0.0 mplr -vo sdl --vm -fs  -ao null -input file=/home/uid0001/bgmpfifo -really-quiet --playlist=./upload/video_all.pls >/dev/null 2>/dev/null; done &
+sleep 45; while :; do ~/main > main.txt 2> emain.txt; sleep 1; done &
+sleep 45; while :; do ~/mp/test > test.txt 2>etest.txt ; sleep 1; done &
+
+test -x ~/scripts/stat.sh && ~/scripts/stat.sh &
+#DISPLAY=:0.0 vncviewer  -encodings CoRRE 192.168.0.2:5903 &
