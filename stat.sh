@@ -9,7 +9,6 @@ do
   amixer=$(echo `grep SMASTER .rm | sed "s/^........//" | xargs -n 2 amixer get ` | grep % | awk -v RS=[ -v FS=] 'NR>1{print $1" " }' | grep %| tr -d '\n')
   disk=$(df -h | grep '/$' | awk -F ' ' '{print " D"$5}' | tr -d '\n')
 
-  # First param = server ip(192.168.0.1)
   test "$hash" != "$oldtrackname" -a "$hash" != "00000000000000000000000000000000"  && wget --no-check-certificate -O /dev/null -o /dev/null --header="Content-Type: application/json" --post-data='{"jsonrpc": "2.0", "method": "new_track", "id":1, "params": ["'$id'", "'$hash' '"$amixer$disk"'", "'`date +%T`'", "'`date +%D`'"] }' http://$1
 
   oldtrackname=$trackname
